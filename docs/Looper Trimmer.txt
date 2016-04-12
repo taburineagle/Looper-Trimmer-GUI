@@ -1,0 +1,25 @@
+Looper Trimmer
+
+- Need to know where FFMPEG is
+- Open GUI:
+	- Load a looper file
+	- Choose destination
+	- Handles on the exported media file
+	- Create a new Looper file based on the new media
+
+- Show Looper file in grid
+	- Looper name
+	- IN point
+	- OUT point
+	- Handles on that file
+	- Duration
+	- Source filename
+	- Destination path
+	- Destination codec
+
+- Have multiple selection capability to:
+	- Change handles for exported files
+	- Change destination paths
+	- Change export codec
+		- Losslessly trim event
+		- Transcode event to ProRes
