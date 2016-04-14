@@ -1,8 +1,6 @@
 Func loadPreferences()
 	Opt("GUIOnEventMode", 0)
 	GUISetState(@SW_DISABLE, $mainWindow) ; disable the main window when the prefs window is open
-	
-	MsgBox(0,"","Helloj")
 
 	$ffmpegPath = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Paths", "ffmpeg", "")
 	$tsMuxeRPath = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Paths", "tsMuxeR", "")
