@@ -16,9 +16,15 @@
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
 
-Opt("GUIOnEventMode", 1)
+#include "includes\GUI_IntroductionWindow.au3" ; welcome screen for the first time using the program
 
 Global $ffmpegPath = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Paths", "ffmpeg", "")
+
+While $ffmpegPath = ""
+	loadIntroWindow() ; opens the "Welcome to Looper Trimmer!" window to get the ffmpeg path
+	$ffmpegPath = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Paths", "ffmpeg", "") ; loads the path from the .ini file to make sure it worked
+WEnd
+
 Global $tsMuxeRPath = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Paths", "tsMuxeR", "")
 Global $hideEncoding = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Defaults", "hideEncoding", 0)
 
@@ -27,6 +33,8 @@ Global $isWorking = 0
 Global $menuCreated = False
 Global $eventsListContextMenu, $handlesMenu_1, $handlesMenu_2, $handlesMenu_3, $handlesMenu_4, $handlesMenu_5
 Global $transcodeMenu_Lossless, $transcodeMenu_LosslessTS, $transcodeMenu_ProRes
+
+Opt("GUIOnEventMode", 1)
 
 $mainWindow = GUICreate("Looper Trimmer by Zach Glenwright", 970, 440, 192, 124, BitOR($WS_SIZEBOX, $WS_MINIMIZEBOX))
 
