@@ -86,6 +86,7 @@ Next
 #include "includes\FILE_chooseDestination.au3" ; choose the destination path to export new clipped files to
 #include "includes\FILE_findFile.au3" ; find the media file in the current Looper path, if it doesn't exist, then return "poo"
 #include "includes\FILE_findDestFile.au3" ; find the destination file for the current trim operation
+#include "includes\FILE_deleteFiles.au3" ; function to delete files after batch processing is complete
 
 ; GUI INCLUDES
 #include "includes\custom\GUI_mainWindowCustom.au3" ; sets up the main window fonts and parameters

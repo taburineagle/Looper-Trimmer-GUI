@@ -70,6 +70,10 @@ Func submitJob()
 		EndIf
 	Next
 
+	If GUICtrlRead($recycleMediaRadio) = 1 Then
+		deleteFiles()
+	EndIf
+
 	$isWorking = 0
 	GUICtrlSetData($submitButton, "Submit Job")
 EndFunc
