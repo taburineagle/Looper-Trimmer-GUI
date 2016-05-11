@@ -1,6 +1,6 @@
 Func loadIntroWindow()
 	$IntroWindow = GUICreate("Welcome!", 259, 468, -1, -1)
-	$_WT1 = GUICtrlCreateLabel("Welcome to Looper Trimmer!", 40, 8, 186, 21)
+	$_WT1 = GUICtrlCreateLabel("Welcome to Looper Trimmer!", 38, 8, 186, 21)
 	$_WT2 = GUICtrlCreateEdit("", 16, 32, 225, 49, $ES_READONLY, 0)
 	$_WT3 = GUICtrlCreateEdit("", 16, 85, 225, 97, $ES_READONLY, 0)
 	$_FFMPEGURL = GUICtrlCreateLabel("https://ffmpeg.zeranoe.com/builds/", 20, 184, 200, 19)

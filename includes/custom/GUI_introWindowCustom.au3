@@ -6,6 +6,7 @@ GUICtrlSetFont($_WT4, 9, 400, 0, "Segoe UI")
 GUICtrlSetFont($_WT5, 9, 400, 0, "Segoe UI")
 
 GUICtrlSetFont($_FFMPEGURL, 9, 800, 0, "Segoe UI")
+GUICtrlSetCursor($_FFMPEGURL, 0)
 
 GUICtrlSetFont($IntroPathFFTF, 8, 400, 0, "Segoe UI")
 GUICtrlSetFont($IntroPathFFButton, 9, 400, 0, "Segoe UI")

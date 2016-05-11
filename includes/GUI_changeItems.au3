@@ -51,7 +51,12 @@ Func changeItems($statusChange)
 							$deniedAnyItems = True ; if ANY of the items selected aren't tsMuxeR-able, then display the setting error below
 						EndIf
 					Else ; if tsMuxeR isn't configured correctly, then display this error - once
-						MsgBox(16, "tsMuxeR Path Error!", "tsMuxer is not properly set up - Looper Trimmer can not find the executable file (" & $tsMuxerPath & ") listed in the preferences.  Either the path is set incorrectly, or the executable for tsMuxeR has moved since you set the preferences up." & @CRLF & @CRLF & "Please reconfigure the tsMuxeR path in preferences and try again.")
+						If $tsMuxerPath <> "" Then
+							MsgBox(16, "tsMuxeR Path Error!", "tsMuxer is not properly set up - Looper Trimmer can not find the executable file (" & $tsMuxerPath & ") listed in the preferences.  Either the path is set incorrectly, or the executable for tsMuxeR has moved since you set the preferences up." & @CRLF & @CRLF & "Please reconfigure the tsMuxeR path in preferences and try again.")
+						Else
+							MsgBox(16, "tsMuxeR Not Configured!", "tsMuxer is not properly configured yet.  To configure tsMuxeR, go to the preferences and find the tsMuxeR.exe file for your current tsMuxeR installation, save the preferences, and then try to change the transcode setting on this item again.")
+						EndIf
+
 						ExitLoop
 					EndIf
 			EndSwitch
