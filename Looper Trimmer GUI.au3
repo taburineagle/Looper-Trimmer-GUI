@@ -97,6 +97,7 @@ Next
 #include "includes\GUI_selectAll.au3" ; selects all with CTRL-A and makes the menu for those items
 
 ; JOB INCLUDES
+#include "includes\JOB_testEncoderPaths.au3" ; test whether the paths specified for ffmpeg and/or tsMuxeR are filled and correct
 #include "includes\JOB_submitJob.au3" ; submit the job to the trimmer
 #include "includes\JOB_getAdjustedEditPoints.au3" ; get adjusted IN and OUT points according to the handles
 #include "includes\JOB_returnHandles.au3" ; get how many seconds of handle adjustment you need
