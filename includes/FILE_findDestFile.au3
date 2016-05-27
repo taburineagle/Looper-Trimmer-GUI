@@ -9,7 +9,7 @@ Func findDestFile($destPath, $filePath, $fileExtension, $currentIteration)
 		; $fileExtension is already set to .mov due to ProRes encoding
 	EndIf
 
-	$destFile = ($destPath & "EV_" & StringFormat("%03d", ($currentIteration + 1)) & "_" & $exportFile & $fileExtension)
+	$destFile = ($destPath & $exportFile & "_EV_" & StringFormat("%03d", ($currentIteration + 1)) & $fileExtension)
 
 	$deleteFile = 1
 
