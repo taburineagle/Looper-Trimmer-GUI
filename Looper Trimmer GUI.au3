@@ -31,6 +31,7 @@ Global $tsMuxeRPath = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Paths", "tsMux
 Global $hideEncoding = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Defaults", "hideEncoding", 0)
 
 Global $isWorking = 0
+Global $disableSubmit = False ; if you delete all of the source files in a job, this Global disables Submit in the main loop
 
 Global $menuCreated = False
 Global $eventsListContextMenu, $handlesMenu_1, $handlesMenu_2, $handlesMenu_3, $handlesMenu_4, $handlesMenu_5
@@ -120,7 +121,7 @@ Func submitJobButton()
 EndFunc
 
 While 1
-	If GUICtrlRead($currentLooperTF) <> "" And GUICtrlRead($destTF) <> "" Then
+	If GUICtrlRead($currentLooperTF) <> "" And GUICtrlRead($destTF) <> "" And $disableSubmit = False Then
 		If GUICtrlGetState($submitButton) <> 80 Then
 			GUICtrlSetState($submitButton, $GUI_ENABLE)
 		EndIf

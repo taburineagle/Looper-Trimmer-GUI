@@ -16,7 +16,9 @@ Func deleteFiles()
 
 	If $deleteFiles = 6 Then
 		For $i = 1 to $fileDeleteArray[0]
-			FileRecycle($fileDeleteArray[$i])
+			If $fileDeleteArray[$i] <> "ERROR: File for this event not found" And $fileDeleteArray[$i] <> " <source file recycled>" Then
+				FileRecycle($fileDeleteArray[$i]) ; if the path is valid, then recycle the file
+			EndIf
 		Next
 
 		If $fileDeleteArray[0] = 1 Then
@@ -24,6 +26,12 @@ Func deleteFiles()
 		Else
 			MsgBox(64, "Files recycled", $fileDeleteArray[0] & " original source files were sent to the recycle bin.")
 		EndIf
+
+		For $i = 0 to $itemCount
+			_GUICtrlListView_SetItemText($eventsList, $i, " <source file recycled>", 4)
+		Next
+
+		$disableSubmit = True ; disable submitting a new job if everything's goone!
 	Else
 		MsgBox(64, "Files not recycled", "You chose not to delete the original source files.")
 	EndIf

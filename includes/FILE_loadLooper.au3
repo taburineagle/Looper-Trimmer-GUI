@@ -38,5 +38,6 @@ Func loadLooper()
 		Next
 
 		FileClose($readingFile)
+		$disableSubmit = False ; enable submit button if loading a new .looper file (submit gets disabled if all files are deleted from a prior job)
 	EndIf
 EndFunc
