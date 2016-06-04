@@ -15,8 +15,10 @@
 #include <ListViewConstants.au3>
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
+#include <WinAPIEx.au3>
 
-#include "includes\GUI_IntroductionWindow.au3" ; welcome screen for the first time using the program
+#include 'includes\GUI_IntroductionWindow.au3' ; welcome screen for the first time using the program
+#include 'includes\SYS_Remove_CS_DBLCLKS.au3' ; remove double-clicking ability for static (label) controls so it doesn't change clipboard
 
 Global $ffmpegPath = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Paths", "ffmpeg", "")
 
@@ -40,6 +42,7 @@ $mainWindow = GUICreate("Looper Trimmer by Zach Glenwright", 970, 440, (@Desktop
 
 $currentLooperButton = GUICtrlCreateButton("", 8, 6, 26, 26, BitOR($BS_ICON, $BS_CENTER)) ; GUI Element 3
 $currentLooperDesc = GUICtrlCreateLabel("Current Looper file:", 45, 11, 125, 21) ; GUI Element 4
+_Remove_CS_DBLCLKS(-1) ; remove double-click ability from static controls (but not from buttons or list views!)
 $currentLooperTF = GUICtrlCreateLabel("", 176, 11, 700, 21) ; GUI Element 5
 
 $destButton = GUICtrlCreateButton("", 8, 36, 26, 26, BitOR($BS_ICON, $BS_CENTER)) ; GUI Element 6
