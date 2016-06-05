@@ -2,7 +2,6 @@ Func submitJob()
 	$totalCount = _GUICtrlListView_GetItemCount($eventsList)
 
 	$startingItem = 0
-	$alreadyCompleted = 0
 
 	For $a = 0 to $totalCount - 1
 		If _GUICtrlListView_GetItemText($eventsList, $a, 6) = "Job cancelled" Then
@@ -15,12 +14,11 @@ Func submitJob()
 			EndIf
 
 			ExitLoop ; Exit this search and go on with it!
-		ElseIf _GUICtrlListView_GetItemText($eventsList, $a, 6) = "Done" Then
-			$alreadyCompleted = $alreadyCompleted + 1
 		EndIf
 	Next
 
-	If $alreadyCompleted = $totalCount Then
+	If _GUICtrlListView_GetItemText($eventsList, ($totalCount - 1), 6) = "Done" Or _
+	   _GUICtrlListView_GetItemText($eventsList, ($totalCount - 1), 6) = "Skipped (no source file)" Then ; you already did this before!
 		$resubmitJob = MsgBox(36, "Re-submit job?", "It looks like you've already completed this job.  Would you like to re-submit it?" & @CRLF & @CRLF & 'Click "Yes" below to re-submit this job and click "No" to cancel.')
 
 		If $resubmitJob = 7 Then ; You clicked "No"
@@ -106,7 +104,6 @@ Func submitJob()
 			EndIf
 
 			$alreadyCompleted = $alreadyCompleted + 1 ; add one to the counter, this is for checking if the whole job completed (and you can delete)
-
 		Else
 			_GUICtrlListView_SetItem($eventsList, "Job cancelled", $i, 6) ; set the rest of the items to "Job cancelled" if you click cancel
 		EndIf

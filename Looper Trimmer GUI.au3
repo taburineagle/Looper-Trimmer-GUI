@@ -39,7 +39,7 @@ Global $transcodeMenu_Lossless, $transcodeMenu_LosslessTS, $transcodeMenu_ProRes
 
 Opt("GUIOnEventMode", 1)
 
-$mainWindow = GUICreate("Looper Trimmer by Zach Glenwright", 970, 440, (@DesktopWidth - 990), 6, BitOR($WS_SIZEBOX, $WS_MINIMIZEBOX))
+$mainWindow = GUICreate("Looper Trimmer by Zach Glenwright", 970, 440, (@DesktopWidth - 988), 18, BitOR($WS_SIZEBOX, $WS_MINIMIZEBOX))
 
 $currentLooperButton = GUICtrlCreateButton("", 8, 6, 26, 26, BitOR($BS_ICON, $BS_CENTER)) ; GUI Element 3
 $currentLooperDesc = GUICtrlCreateLabel("Current Looper file:", 45, 11, 125, 21) ; GUI Element 4
