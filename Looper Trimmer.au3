@@ -1,3 +1,11 @@
+#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#AutoIt3Wrapper_Res_Comment=Looper Trimmer is an EDL-like editing program that takes .looper playlist files from MPC-HC Looper and trims each event into smaller independent files for editabilty, portability and to save disk space.
+#AutoIt3Wrapper_Res_Description=Looper Trimmer by Zach Glenwright
+#AutoIt3Wrapper_Res_Fileversion=6.7.16.3
+#AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
+#AutoIt3Wrapper_Res_LegalCopyright=2016 Zach Glenwright
+#AutoIt3Wrapper_Res_Language=1033
+#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 ; LOOPER TRIMMER GUI
 ; © 2016 ZACH GLENWRIGHT
 ;
@@ -16,6 +24,11 @@
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
 #include <WinAPIEx.au3>
+#include <Misc.au3>
+
+If _Singleton("Looper_Trimmer", 1) = 0 Then
+	Exit
+EndIf
 
 #include 'includes\GUI_IntroductionWindow.au3' ; welcome screen for the first time using the program
 #include 'includes\SYS_Remove_CS_DBLCLKS.au3' ; remove double-clicking ability for static (label) controls so it doesn't change clipboard
@@ -39,7 +52,7 @@ Global $transcodeMenu_Lossless, $transcodeMenu_LosslessTS, $transcodeMenu_ProRes
 
 Opt("GUIOnEventMode", 1)
 
-$mainWindow = GUICreate("Looper Trimmer by Zach Glenwright", 970, 440, (@DesktopWidth - 988), 18, BitOR($WS_SIZEBOX, $WS_MINIMIZEBOX))
+$mainWindow = GUICreate("Looper Trimmer by Zach Glenwright (RC1)", 970, 440, (@DesktopWidth - 988), 18, BitOR($WS_SIZEBOX, $WS_MINIMIZEBOX))
 
 $currentLooperButton = GUICtrlCreateButton("", 8, 6, 26, 26, BitOR($BS_ICON, $BS_CENTER)) ; GUI Element 3
 $currentLooperDesc = GUICtrlCreateLabel("Current Looper file:", 45, 11, 125, 21) ; GUI Element 4
