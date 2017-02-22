@@ -56,25 +56,26 @@ Func submitJob()
 
 				_GUICtrlListView_SetItem($eventsList, "Trimming...", $i, 6)
 
-				If $currentJobTranscode = "Trim Losslessly (ffmpeg)" Then
-					$destFile = findDestFile(GUICtrlRead($destTF), $currentJobSourcefile, -1, $i)
+				Switch $currentJobTranscode
+					Case "(ff) Lossless Trim", "(ff) Lossless to .mkv", "(ff) Transcode to ProRes"
+						If $currentJobTranscode = "(ff) Lossless Trim" Then
+							$destFile = findDestFile(GUICtrlRead($destTF), $currentJobSourcefile, -1, $i)
+						ElseIf $currentJobTranscode = "(ff) Lossless to .mkv" Then
+							$destFile = findDestFile(GUICtrlRead($destTF), $currentJobSourcefile, ".mkv", $i)
+						ElseIf $currentJobTranscode = "(ff) Transcode to ProRes" Then
+							$destFile = findDestFile(GUICtrlRead($destTF), $currentJobSourcefile, ".mov", $i)
+						EndIf
 
-					If $destFile[0] = 1 Then
-						ffmpegJob($currentJobSourcefile, $destFile[1], $adjustedEditPoints[0], $adjustedEditPoints[1], $currentJobTranscode)
-					EndIf
-				ElseIf $currentJobTranscode = "Transcode to ProRes" Then
-					$destFile = findDestFile(GUICtrlRead($destTF), $currentJobSourcefile, ".mov", $i)
+						If $destFile[0] = 1 Then
+							ffmpegJob($currentJobSourcefile, $destFile[1], $adjustedEditPoints[0], $adjustedEditPoints[1], $currentJobTranscode)
+						EndIf
+					Case "(tsM) Lossless to .m2ts"
+						$destFile = findDestFile(GUICtrlRead($destTF), $currentJobSourcefile, ".m2ts", $i)
 
-					If $destFile[0] = 1 Then
-						ffmpegJob($currentJobSourcefile, $destFile[1], $adjustedEditPoints[0], $adjustedEditPoints[1], $currentJobTranscode)
-					EndIf
-				ElseIf $currentJobTranscode = "Trim Losslessly (tsMuxeR)" Then
-					$destFile = findDestFile(GUICtrlRead($destTF), $currentJobSourcefile, ".m2ts", $i)
-
-					If $destFile[0] = 1 Then
-						tsMuxeRJob($currentJobSourcefile, $destFile[1], $adjustedEditPoints[0], $adjustedEditPoints[1])
-					EndIf
-				EndIf
+						If $destFile[0] = 1 Then
+							tsMuxeRJob($currentJobSourcefile, $destFile[1], $adjustedEditPoints[0], $adjustedEditPoints[1])
+						EndIf
+				EndSwitch
 
 				If GUICtrlRead($newLooperRadio) = 1 Then
 					_GUICtrlListView_SetItem($eventsList, "Adding event to new file...", $i, 6)

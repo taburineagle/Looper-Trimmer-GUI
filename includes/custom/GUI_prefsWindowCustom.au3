@@ -18,4 +18,4 @@ GUICtrlSetFont($saveButton, 9, 800, 0, "Segoe UI")
 
 ; VALUES FOR COMBO BOXES
 GUICtrlSetData($defaultHandlesList, "1 second|2 seconds|3 seconds|4 seconds|5 seconds")
-GUICtrlSetData($defaultTrimList, "Trim Losslessly (ffmpeg)|Transcode to ProRes")
+GUICtrlSetData($defaultTrimList, "(ff) Lossless Trim|(ff) Lossless to .mkv|(ff) Transcode to ProRes")

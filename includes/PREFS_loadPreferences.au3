@@ -8,7 +8,7 @@ Func loadPreferences()
 	$newLooperDefault = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Defaults", "newLooper", 1)
 	$recycleDefault = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Defaults", "recycleOriginals", 0)
 	$defaultHandles = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Defaults", "defaultHandles", "2 seconds")
-	$defaultTrim = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Defaults", "defaultTrim", "Trim Losslessly (ffmpeg)")
+	$defaultTrim = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Defaults", "defaultTrim", "(ff) Lossless Trim")
 
 	$prefsWindow = GUICreate("Looper Trimmer Preferences", 399, 295, -1, -1)
 

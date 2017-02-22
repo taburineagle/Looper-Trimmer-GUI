@@ -1,3 +1,7 @@
+Func handlesMenu_0()
+	changeItems("0 seconds")
+EndFunc
+
 Func handlesMenu_1()
 	changeItems("1 second")
 EndFunc
@@ -18,16 +22,20 @@ Func handlesMenu_5()
 	changeItems("5 seconds")
 EndFunc
 
-Func transcodeMenu_Lossless()
-	changeItems("Trim Losslessly (ffmpeg)")
+Func transcodeMenu_LosslessTS()
+	changeItems("(tsM) Lossless to .m2ts")
 EndFunc
 
-Func transcodeMenu_LosslessTS()
-	changeItems("Trim Losslessly (tsMuxeR)")
+Func transcodeMenu_Lossless()
+	changeItems("(ff) Lossless Trim")
+EndFunc
+
+Func transcodeMenu_LosslessMKV()
+	changeItems("(ff) Lossless to .mkv")
 EndFunc
 
 Func transcodeMenu_ProRes()
-	changeItems("Transcode to ProRes")
+	changeItems("(ff) Transcode to ProRes")
 EndFunc
 
 Func changeItems($statusChange)
@@ -37,11 +45,11 @@ Func changeItems($statusChange)
 	If IsArray($selectedItems) Then
 		For $a = 1 to $selectedItems[0]
 			Switch $statusChange
-				Case "1 second", "2 seconds", "3 seconds", "4 seconds", "5 seconds"
+				Case "0 seconds", "1 second", "2 seconds", "3 seconds", "4 seconds", "5 seconds"
 					_GUICtrlListView_SetItem($eventsList, $statusChange, $selectedItems[$a], 3)
-				Case "Trim Losslessly (ffmpeg)", "Transcode to ProRes"
+				Case "(ff) Lossless Trim", "(ff) Lossless to .mkv", "(ff) Transcode to ProRes"
 					_GUICtrlListView_SetItem($eventsList, $statusChange, $selectedItems[$a], 5)
-				Case "Trim Losslessly (tsMuxeR)"
+				Case "(tsM) Lossless to .m2ts"
 					If testEncoderPaths("tsMuxer") <> 0 Then ; if tsMuxeR is properly set up, then check the extensions
 						$currentFileName = _GUICtrlListView_GetItemText($eventsList, $selectedItems[$a], 4)
 

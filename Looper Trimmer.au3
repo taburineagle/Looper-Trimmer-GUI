@@ -47,12 +47,12 @@ Global $isWorking = 0
 Global $disableSubmit = False ; if you delete all of the source files in a job, this Global disables Submit in the main loop
 
 Global $menuCreated = False
-Global $eventsListContextMenu, $handlesMenu_1, $handlesMenu_2, $handlesMenu_3, $handlesMenu_4, $handlesMenu_5
-Global $transcodeMenu_Lossless, $transcodeMenu_LosslessTS, $transcodeMenu_ProRes
+Global $eventsListContextMenu, $handlesMenu_0, $handlesMenu_1, $handlesMenu_2, $handlesMenu_3, $handlesMenu_4, $handlesMenu_5
+Global $transcodeMenu_Lossless, $transcodeMenu_LosslessMKV, $transcodeMenu_LosslessTS, $transcodeMenu_ProRes
 
 Opt("GUIOnEventMode", 1)
 
-$mainWindow = GUICreate("Looper Trimmer by Zach Glenwright (RC1)", 970, 440, (@DesktopWidth - 988), 18, BitOR($WS_SIZEBOX, $WS_MINIMIZEBOX))
+$mainWindow = GUICreate("Looper Trimmer by Zach Glenwright (RC2 2017)", 970, 440, (@DesktopWidth - 988), 18, BitOR($WS_SIZEBOX, $WS_MINIMIZEBOX))
 
 $currentLooperButton = GUICtrlCreateButton("", 8, 6, 26, 26, BitOR($BS_ICON, $BS_CENTER)) ; GUI Element 3
 $currentLooperDesc = GUICtrlCreateLabel("Current Looper file:", 45, 11, 125, 21) ; GUI Element 4

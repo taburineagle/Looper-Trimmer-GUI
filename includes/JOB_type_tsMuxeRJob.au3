@@ -14,12 +14,12 @@ Func tsMuxeRJob($sourceFile, $destFile, $inPoint, $outPoint)
 	FileClose($writingFile)
 
 	If $hideEncoding = 1 Then
-		$thePID = ShellExecute($tsMuxeRPath, @TempDir & '\Trimmer.meta "' & $destFile & '"', Default, Default, @SW_HIDE)
+		$thePID = ShellExecute($tsMuxeRPath, @TempDir & '\Trimmer.meta "' & $destFile & '"', Default, Default, @SW_SHOWMINNOACTIVE)
 	Else
-		$thePID = ShellExecute($tsMuxeRPath, @TempDir & '\Trimmer.meta "' & $destFile & '"')
+		$thePID = ShellExecute($tsMuxeRPath, @TempDir & '\Trimmer.meta "' & $destFile & '"', Default, Default, @SW_SHOWNOACTIVATE)
 	EndIf
 
-	WinActivate($mainWindow)
+;~ 	WinActivate($mainWindow)
 	ProcessWaitClose($thePID)
 
 	FileDelete(@TempDir & "\Trimmer.meta") ; delete the temporary .meta file tsMuxeR needs to use for processing

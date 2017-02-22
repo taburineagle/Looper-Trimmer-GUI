@@ -29,7 +29,7 @@ Func loadLooper()
 
 			$newEvent = $newEvent & "|" & $currentItemArray[4]
 
-			$defaultTrim = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Defaults", "defaultTrim", "Trim Losslessly (ffmpeg)")
+			$defaultTrim = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Defaults", "defaultTrim", "(ff) Lossless Trim")
 			$newEvent = $newEvent & "|" & $defaultTrim
 
 			$newEvent = $newEvent & "|" & ""
