@@ -1,4 +1,11 @@
 Func createContextMenu()
+	#cs
+	- Check to see if the context menu came from the right (in fact, maybe it would make more sense
+	if the menu only generated when you clicked the right button)
+	
+	- If you click the right button, generate the menu every single time?
+	#ce
+	
 	If $menuCreated = True Then
 		GUICtrlDelete($eventsListContextMenu)
 		$menuCreated = False
