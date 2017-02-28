@@ -1,9 +1,27 @@
 Func createContextMenu()
 	#cs
+	--------------================== STUFF A DO!!!!! ==================--------------
+	
 	- Check to see if the context menu came from the right (in fact, maybe it would make more sense
 	if the menu only generated when you clicked the right button)
+		- Check the selection
+		- Make the menu (including the .m2ts selections)
+		- Display the menu
+		- Re-select the correct positions in the list
+			- It would be amazingly awesome not to need to do this step!
+		- Delete the menu
+		- Set $menuCreated to False (or don't use a Global for that variable, only use it in this function?
 	
 	- If you click the right button, generate the menu every single time?
+	
+	- Create the menu on right click, and then immediately destroy it when the selection is made?
+	
+	- Maybe eliminate $menuCreated global - but leave it in to trigger the menu itself...?
+		- If $menuCreated is true then go along with showing the menu
+		- Then re-select the correct items (or maybe just disable the list view altogether when the menu is up?)
+			- Will re-selecting the items work for all of the selections, or will it screw up after a few of them?
+			
+	--------------================== STUFF A DO!!!!! ==================--------------
 	#ce
 	
 	If $menuCreated = True Then
