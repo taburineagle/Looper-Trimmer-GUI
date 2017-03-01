@@ -29,4 +29,3 @@ GUICtrlSetOnEvent($prefsButton, "loadPreferences")
 GUICtrlSetOnEvent($submitButton, "submitJobButton")
 
 GUISetOnEvent($GUI_EVENT_CLOSE, "quitMe")
-GUISetOnEvent($GUI_EVENT_PRIMARYDOWN, "createContextMenu")

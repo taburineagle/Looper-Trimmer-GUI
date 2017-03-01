@@ -25,6 +25,7 @@
 #include <WindowsConstants.au3>
 #include <WinAPIEx.au3>
 #include <Misc.au3>
+#include <GuiMenu.au3>
 
 If _Singleton("Looper_Trimmer", 1) = 0 Then
 	Exit
@@ -46,13 +47,12 @@ Global $hideEncoding = IniRead(@ScriptDir & "/LooperTrimmer.ini", "Defaults", "h
 Global $isWorking = 0
 Global $disableSubmit = False ; if you delete all of the source files in a job, this Global disables Submit in the main loop
 
-Global $menuCreated = False
-Global $eventsListContextMenu, $handlesMenu_0, $handlesMenu_1, $handlesMenu_2, $handlesMenu_3, $handlesMenu_4, $handlesMenu_5
-Global $transcodeMenu_Lossless, $transcodeMenu_LosslessMKV, $transcodeMenu_LosslessTS, $transcodeMenu_ProRes
+Global Enum $handlesMenu_0 = 1000, $handlesMenu_1, $handlesMenu_2, $handlesMenu_3, $handlesMenu_4, $handlesMenu_5
+Global Enum $transcodeMenu_LosslessTS = 2000, $transcodeMenu_Lossless, $transcodeMenu_LosslessMKV, $transcodeMenu_ProRes
 
 Opt("GUIOnEventMode", 1)
 
-$mainWindow = GUICreate("Looper Trimmer by Zach Glenwright (RC2 2017)", 970, 440, (@DesktopWidth - 988), 18, BitOR($WS_SIZEBOX, $WS_MINIMIZEBOX))
+$mainWindow = GUICreate("Looper Trimmer by Zach Glenwright BETA (2-28-17 version A)", 970, 440, (@DesktopWidth - 988), 18, BitOR($WS_SIZEBOX, $WS_MINIMIZEBOX))
 
 $currentLooperButton = GUICtrlCreateButton("", 8, 6, 26, 26, BitOR($BS_ICON, $BS_CENTER)) ; GUI Element 3
 $currentLooperDesc = GUICtrlCreateLabel("Current Looper file:", 45, 11, 125, 21) ; GUI Element 4
@@ -109,7 +109,7 @@ Next
 #include "includes\custom\GUI_mainWindowCustom.au3" ; sets up the main window fonts and parameters
 #include "includes\PREFS_loadPreferences.au3" ; loads the preferences window and handles all of that
 #include "includes\SYS_WM_GETMINMAXINFO.au3" ; determines maximum and minimum size for the GUI
-#include "includes\GUI_createContextMenu.au3" ; creates the context menu when its correct to
+#include "includes\GUI_contextMenu.au3" ; creates the context menu (changed 2-28-17 with brand new method for triggering context menu)
 #include "includes\GUI_changeItems.au3" ; change the items in the events list
 #include "includes\GUI_selectAll.au3" ; selects all with CTRL-A and makes the menu for those items
 
